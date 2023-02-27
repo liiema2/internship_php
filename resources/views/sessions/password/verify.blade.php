@@ -11,14 +11,14 @@
         <form class="from-forgetpw">
 
             <input class="from-forgetpw-content-input" type="text">
-            <a  href="{{ route('login') }}" >
+            <a  href="{{ route('login')}}" >
             <button type="button" class="from-forgetpw-content-btn-cancel">
 
             Hủy
             </button>
         </a>
         {{-- href="{{route('verify')}}" --}}
-        <a  >
+        <a   href="{{route('verify')}}">
             <button  class="from-forgetpw-content-btn">
                Tiếp Tục
 

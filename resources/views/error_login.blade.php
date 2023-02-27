@@ -3,16 +3,13 @@
 <link rel="stylesheet" href="{{ asset('../assets/css/style-login.css') }}">
 @endsection
 @section('form')
-<form method="POST" action="{{ route('login') }}"  class="login-left-from-login">
+<form method="POST" action="{{ route('login') }}"   class="login-left-from-login">
 @csrf
     <label for="">Tên đăng nhập *</label>
 
     <input type="text" name="name" class="form-input-name" value="{{'lequinhaivan01'}}" >
-    @error('password')
-        <p>{{$message}}</p>
-    @enderror
-    <label for="">Mật khẩu</label>
 
+    <label for="">Mật khẩu</label>
 <div class="password_position">
 <input type="password" name="password" value="{{'secret'}}" class="form-input-pw">
 <button type="button" class="show-password-button">
@@ -23,10 +20,11 @@
 </div>
 
 {{-- href="{{route('verify')}}"" --}}
-<a  href="{{route('verify')}}" class="form-a-forgot-passwd" >Quên mật khẩu?</a>
+<a  href="{{route('verify')}}" class="form-a-forgot-passwd" >Sai mật khẩu hoặc tên đăng nhập</a>
 
 <button type="submit" class="submit_login">Đăng nhập</button>
 
+<a  href="{{route('verify')}}">Quên mật khẩu?</a>
 </form>
 @endsection
 
@@ -55,7 +53,6 @@
 
       }
     });
-
 </script>
 @endsection
 
