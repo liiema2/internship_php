@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('/assets/css/menu/menu.css') }}">
+    @yield('links')
     <title>Document</title>
 </head>
 
@@ -17,24 +18,41 @@
             </div>
             <div class="menu-bar_list">
                 <a href="" class="menuIconDashboard">
-                    <img  class="menuIconDashboard_iteam"src="{{ url('/assets/images/icons/element-4a.png') }}" alt="">
-                        <div> Dashboard</div>
+                    <img class="menuIconDashboard_iteam"src="{{ url('/assets/images/icons/element-4a.png') }}"
+                        alt="">
+                    <div> Dashboard</div>
 
                 </a>
-                <a href="" class="menuIconDashboard">
-                     <img  class="menuIconDashboard_iteam"src="{{ url('/assets/images/icons/monitor.png') }}" alt=""> <div>Thiết bị</div>
+                <a href="{{route('device')}}" class="menuIconDashboard">
+                    <img class="menuIconDashboard_iteam"src="{{ url('/assets/images/icons/monitor.png') }}"
+                        alt="">
+                    <div>Thiết bị</div>
                 </a>
                 <a href="" class="menuIconDashboard">
-                    <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/Frame 332.png') }}" alt=""><div> Dịch vụ</div>
+                    <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/Frame 332.png') }}"
+                        alt="">
+                    <div> Dịch vụ</div>
                 </a>
                 <a href="" class="menuIconDashboard">
-                     <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/icon dasboard03.png') }}" alt="">   <div> Cấp số</div>
+                    <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/icon dasboard03.png') }}"
+                        alt="">
+                    <div> Cấp số</div>
                 </a>
                 <a href=""class="menuIconDashboard">
-                  <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/Frame.png') }}" alt="">    <div>Báo cáo</div>
+                    <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/Frame.png') }}"
+                        alt="">
+                    <div>Báo cáo</div>
                 </a>
                 <a href=""class="menuIconDashboard">
-                    <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/setting.png') }}" alt="">    <div>Cài đặt hệ thống
+                    <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/setting.png') }}"
+                        alt="">
+                    <div>Cài đặt hệ thống
+                    </div>
+                </a>
+                <a href=""class="menuIconDashboard">
+                    <img class="menuIconDashboard_iteam" src="{{ url('/assets/images/icons/fi_log-out.png') }}"
+                        alt="">
+                    <div> Đăng xuất
                     </div>
                 </a>
 
@@ -47,9 +65,16 @@
         </div>
 
         <div class="menudashboard">
+            @yield('content')
 
+            <div class="menudashboard_body">
 
+                @yield('informations')
+            </div>
         </div>
+
+
+
     </div>
 </body>
 

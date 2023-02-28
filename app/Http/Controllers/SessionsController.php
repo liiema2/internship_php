@@ -1,16 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-// use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Password;
+use  Illuminate\Support\Facades\Auth;
+// use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 // use Illuminate\Support\Facades\Hash;
 class SessionsController extends Controller
 {
+
     //
-    public function create()
+    public function     create()
     {
          return view('sessions.create');
 
@@ -33,7 +39,7 @@ class SessionsController extends Controller
     {
 
         $attributes = request()->validate([
-            'name' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
@@ -47,7 +53,7 @@ class SessionsController extends Controller
         // }
 
         try {
-            if (!auth()->attempt($attributes)) {
+            if (!auth::attempt($attributes)) {
                 throw ValidationException::withMessages([
                     'name' => 'Your provided credentials could not be verified.'
                 ]);
@@ -57,7 +63,43 @@ class SessionsController extends Controller
             return redirect('/dashboard');
         } catch (ValidationException $e) {
             // Xác thực thông tin đăng nhập thất bại, chuyển hướng đến trang lỗi.
-            return redirect()->route('error_login');
+            return redirect('error');
+        }
+
+        // session()->regenerate();
+
+
+
+    }
+    public function check_email()
+    {
+
+        $attributes = request()->validate([
+            'email' => 'required|email|max:255|unique:accounts,email',
+
+        ]);
+
+            dd($attributes);
+        // if (! auth()->attempt($attributes)) {
+        //     throw ValidationException::withMessages([
+        //         'name' => 'Your provided credentials could not be verified.'
+
+        //     ]);
+        //     return redirect()->route('error_login');
+        // }
+
+        try {
+            if (!auth::attempt($attributes)) {
+                throw ValidationException::withMessages([
+                    'name' => 'Your provided credentials could not be verified.'
+                ]);
+            }
+
+            // Đăng nhập thành công, chuyển hướng đến trang chính.
+            return route('session.password.reset');
+        } catch (ValidationException $e) {
+            // Xác thực thông tin đăng nhập thất bại, chuyển hướng đến trang lỗi.
+            // return redirect('error');
         }
 
         // session()->regenerate();
@@ -66,7 +108,7 @@ class SessionsController extends Controller
 
     }
 
-//     public function show(){
+    public function show(){
 
 //     request()->validate([
 //         'email' => 'required|email',
@@ -81,7 +123,10 @@ class SessionsController extends Controller
 //                 : back()->withErrors(['email' => __($status)]);
 
 
-//     }
+        return view('sessions.password.verify');
+
+
+    }
 
 
      public function update(){

@@ -40,6 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'account' => [
+            'driver' => 'session',
+            'provider' => 'accounts',
+        ],
+        'account-api' => [
+            'driver' => 'token',
+            'provider' => 'accounts',
+        ],
     ],
 
     /*
@@ -65,10 +74,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'account' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\account::class,
+        ],
+
+
+
+
+
     ],
 
     /*
@@ -93,6 +107,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        'accounts' => [
+            'provider' => 'accounts',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
     ],
 
     /*

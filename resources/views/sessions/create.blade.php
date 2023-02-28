@@ -7,14 +7,12 @@
 @csrf
     <label for="">Tên đăng nhập *</label>
 
-    <input type="text" name="name" class="form-input-name" value="{{'lequinhaivan01'}}" >
-    @error('password')
-        <p>{{$message}}</p>
-    @enderror
+    <input type="text" name="username" class="form-input-name" value="{{'lequinhaivan01'}}" >
+
     <label for="">Mật khẩu</label>
 
 <div class="password_position">
-<input type="password" name="password" value="{{'secret'}}" class="form-input-pw">
+<input type="password" name="password" value="{{'123456'}}" class="form-input-pw">
 <button type="button" class="show-password-button">
     <img src="{{url('../assets/images/Vector.png')}}" alt="">
 

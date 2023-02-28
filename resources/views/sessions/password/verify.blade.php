@@ -18,7 +18,8 @@
             </button>
         </a>
         {{-- href="{{route('verify')}}" --}}
-        <a   href="{{route('verify')}}">
+        {{-- href="{{route('resert')}}" --}}
+        <a  href="{{route('reset')}}" >
             <button  class="from-forgetpw-content-btn">
                Tiếp Tục
 
